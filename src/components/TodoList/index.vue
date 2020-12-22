@@ -1,18 +1,38 @@
 <template>
   <div>
-    <h1>TodoList</h1>
-    <todo-item></todo-item>
+    <todo-item
+      v-for="item of todoList"
+      :key="item.id"
+      :item="item"
+      @removeTodo="removeTodo"
+      @setStatus="setStatus"
+      @setDoing="setDoing"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { ITodo } from "../../typings/index";
+import { defineComponent, onMounted, PropType } from "vue";
 import TodoItem from "./TodoItem.vue";
+import { IUseTodo, useTodo } from "../../hocks";
 
 export default defineComponent({
   name: "TodoList",
+  props: {
+    todoList: Array as PropType<ITodo[]>,
+  },
   components: {
     TodoItem,
+  },
+  setup(props) {
+    const { removeTodo, setStatus, setDoing }: IUseTodo = useTodo();
+
+    return {
+      removeTodo,
+      setStatus,
+      setDoing,
+    };
   },
 });
 </script>

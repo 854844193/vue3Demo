@@ -19,7 +19,6 @@ export default defineComponent({
         inputValue.value = "";
       }
     };
-
     return {
       inputValue,
       setValue,

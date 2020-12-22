@@ -22,7 +22,7 @@ npm run build
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-# 组件-->commit-->mutation-->atate-->试图变更-->响应式
+# 组件-->commit-->mutation-->state-->试图变更-->响应式
 
 # 1.组件->dispatch->action
 
