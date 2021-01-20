@@ -1,6 +1,11 @@
 <template>
-  <div>
-    <input type="text" v-model="inputValue" @keyup="setValue" />
+  <div class="itemInput">
+    <input
+      type="text"
+      placeholder="write your plan..."
+      v-model="inputValue"
+      @keyup="setValue"
+    />
   </div>
 </template>
 
@@ -27,5 +32,15 @@ export default defineComponent({
 });
 </script>
 
-<style >
-</style>
+<style scoped>
+.itemInput input {
+  outline: none;
+  width: 450px;
+  height: 40px;
+  border-radius: 20px;
+  padding: 5px 15px;
+  font-size: 20px;
+  border: 2px solid #ff7a00;
+}
+</style>>
+

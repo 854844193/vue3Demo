@@ -5,21 +5,25 @@
       :checked="item.status === Finish"
       @click="setStatus(item.id)"
     />
-    <span :class="item.status === Finish ? 'line-through' : ''">
+    <p :class="item.status === Finish ? 'line-through' : ''">
       {{ item.content }}
-    </span>
-    <a-button type="primary" shape="circle" @click="removeTodo(item.id)">
-      <template #icon><DeleteOutlined /></template>
-    </a-button>
-    <button style="margin-left: 10px; background-color: #f56c6c">删除</button>
-    <button
-      v-if="item.status !== Finish"
-      @click="setDoing(item.id)"
-      style="margin-left: 10px"
-      :class="item.status === Doing ? 'doing' : 'willDo'"
-    >
-      {{ item.status === Doing ? "正在做..." : "马上做" }}
-    </button>
+    </p>
+    <div>
+      <button
+        style="margin-left: 10px; background-color: #f56c6c"
+        @click="removeTodo(item.id)"
+      >
+        Delete
+      </button>
+      <button
+        v-if="item.status !== Finish"
+        @click="setDoing(item.id)"
+        style="margin-left: 10px"
+        :class="item.status === Doing ? 'doing' : 'willDo'"
+      >
+        {{ item.status === Doing ? "Padding" : "Todo" }}
+      </button>
+    </div>
   </div>
 </template>
 
@@ -64,16 +68,35 @@ export default defineComponent({
 });
 </script>
 
-<style >
-input,
+<style scoped>
+.todoItem {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+.todoItem p {
+  width: 280px;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.todoItem input {
+  margin: 0 10px;
+}
+
+.todoItem input,
 button {
   cursor: pointer;
 }
-button {
-  border: 0.0625rem solid grey;
-}
-.todoItem {
-  margin: 10px 0;
+.todoItem div button {
+  border: 1px solid grey;
+  border-radius: 6px;
+  padding: 0px 5px;
+  outline: none;
 }
 .line-through {
   text-decoration: line-through;
